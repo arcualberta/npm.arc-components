@@ -1,0 +1,25 @@
+.title {
+    color:darkgreen;
+}
+
+button{
+    background-color: blue;
+    color: white;
+    margin: 10px;
+    width: 80px;
+    height:40px;
+    vertical-align: middle;
+    font-size: 0.75em;
+}
+button:disabled{
+    background-color: grey;
+    color: black;
+}
+
+.wrapper{
+    border: solid 1px blue;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 10px;
+}

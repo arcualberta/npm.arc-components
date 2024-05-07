@@ -1,0 +1,12 @@
+h2 {
+    color: brown
+}
+
+.wrapper {
+    max-width: 300px;
+    text-align: center;
+    border: solid 1px darkgreen;
+    border-radius: 25px;
+    background-color: aquamarine;
+    margin: 15px;
+}
