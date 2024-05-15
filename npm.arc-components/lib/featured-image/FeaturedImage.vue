@@ -1,14 +1,14 @@
 <template>
     <div class="featured-image">
       <a v-if="!(title || linkText)" :href="link || '#'">
-        <img :src="url" :alt="title" />
+        <img :src="url" :alt="title" class="image"/>
       </a>
       <img v-else :src="url" :alt="title" />
       <div class="body">
         <a v-if="!linkText" :href="link || '#'">
           <h6 class="title">{{ title }}</h6>
         </a>
-        <h6 v-else class="title">{{ title }}</h6>
+        <h6 v-else class="originalTitle">{{ title }}</h6>
         <div class="keyword-box">
           <span v-for="keyword in keywords" :key="keyword" class="keyword">{{ keyword }}</span>
         </div>

@@ -50,7 +50,16 @@
   border-radius: 20px;
 }
 
+
 .title {
+  text-decoration: underline;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #070707;
+}
+
+.originalTitle {
   text-decoration: underline;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -96,4 +105,12 @@
   background-color: #85c1ce;
   border-color: black;
   border-style:inherit;
+}
+
+.featured-image:hover .title {
+  transform: scale(1.4);
+}
+
+.featured-image:hover .image {
+  transform: scale(1.1);
 }
