@@ -1,28 +1,52 @@
 <template>
   <div id="app">
-    <h1>Featured Images</h1>
+    <h1 class="heading">Featured Images</h1>
     <div class="featured-images">
       <FeaturedImage
-        imageUrl="../assets/image_03.jpg"
+        url="../assets/image_03.jpg"
         title="Humming Bird"
         :keywords="['nature', 'Humming bird']"
-        reference="https://pixabay.com/photos/bird-hummingbird-ornithology-fly-8733716/"
+        description="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book."
+        link="https://pixabay.com/photos/bird-hummingbird-ornithology-fly-8733716/"
         linkText="Learn More"
       />
+      <!-- linkText is missing ----- title will act as hyperlink -->
       <FeaturedImage
-        imageUrl="../assets/image_01.jpg"
-        title="Gray Spicer Bird"
-        :keywords="['Spring', 'bird watching']"
-        reference="https://pixabay.com/photos/bird-branch-perched-feathers-2295431/"
-        linkText="Learn More"
+        url="../assets/image_01.jpg"
+        title="Blue Bird"
+        :keywords="['Wildlife', 'Bird']"
+        description="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book."
+        link="https://pixabay.com/photos/bird-branch-perched-feathers-2295431/"
+        linkText=""
       />
+      <!-- Title=Tufled Titmouse Bird ----- title, keyword and linkText both are absent------- image will act as hyperlink-->
       <FeaturedImage
-        imageUrl="../assets/image_02.jpg"
-        title="Tufled Bird"
-        :keywords="['Song bird', 'Wildlife']"
-        reference="https://pixabay.com/photos/bird-tufted-titmouse-songbird-8360220/"
+        url="../assets/image_02.jpg"
+        title=""
+        :keywords=[]
+        description="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book."
+        link="https://pixabay.com/photos/bird-tufted-titmouse-songbird-8360220/"
+        linkText=""
+      />
+      <!-- Description & keywords are missing -->
+      <FeaturedImage
+        url="../assets/image_04.jpg"
+        title="Sun Bird"
+        :keywords=[]
+        description=""
+        link="https://pixabay.com/photos/bird-poppies-bokeh-red-flowers-7403593/"
         linkText="Learn More"
       />
+      <!-- keywords are missing -->
+      <FeaturedImage
+        url="../assets/image_05.jpg"
+        title="Turaco Bird"
+        :keywords=[]
+        description="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book."
+        link="https://pixabay.com/photos/bird-white-cheeked-turaco-7576994/"
+        linkText="Learn More"
+      />
+      
     </div>
   </div>
 </template>
