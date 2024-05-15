@@ -76,7 +76,7 @@ const goToSlide = (index: number) => {
 const startAutoScroll = () => {
   autoScrollInterval.value = setInterval(() => {
     nextSlide();
-  }, 2000); // Adjust the interval as needed
+  }, 2000);
 };
 
 const stopAutoScroll = () => {
