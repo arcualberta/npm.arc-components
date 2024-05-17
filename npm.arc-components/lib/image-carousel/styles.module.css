@@ -45,3 +45,18 @@ img {
 .pagination span.active {
   background-color: #333;
 }
+#app {
+  display: flex;
+  gap: 20px; /* Add a gap between the carousels */
+}
+
+.carousel-one,
+.carousel-two,
+.carousel-three {
+  flex: 1;
+}
+
+/* Ensure no extra margin for the last carousel */
+.carousel-three {
+  margin-right: 0;
+}
