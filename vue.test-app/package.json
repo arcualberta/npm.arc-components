@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@arc/arc-components": "file:../npm.arc-components/arc-arc-components-0.0.0.tgz",
     "vue": "^3.4.21"
   },
   "devDependencies": {
