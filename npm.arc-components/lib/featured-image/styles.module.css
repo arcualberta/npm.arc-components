@@ -38,6 +38,10 @@
   transition: transform 0.3s ease;
 }
 
+.col {
+  height: 100%;
+}
+
 .featured-image:hover {
   border-color: #007bff;
   transform: scale(1.1);
