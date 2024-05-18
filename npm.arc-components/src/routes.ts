@@ -1,8 +1,7 @@
 // routes.ts
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from './views/HomeView.vue'
-import AboutView from './views/AboutView.vue'
-import FeaturedImagesView from './views/FeaturedImageView.vue'
+import { HomeView, AboutView, FeaturedImagesView } from './views/main'
+
 
 const routes: RouteRecordRaw[] = [
   {
