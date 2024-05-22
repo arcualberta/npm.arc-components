@@ -47,7 +47,8 @@ img {
 }
 #app {
   display: flex;
-  gap: 20px; /* Add a gap between the carousels */
+  flex-direction: column;
+  gap: py; /* Add a gap between the carousels */
 }
 
 .carousel-one,

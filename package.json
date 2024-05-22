@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@types/swiper": "^6.0.0",
+    "vite-plugin-components": "^0.13.3"
+  },
+  "dependencies": {
+    "swiper": "^11.1.3"
+  }
+}
