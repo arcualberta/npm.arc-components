@@ -77,9 +77,5 @@ const slideInfo3: SlideInfo[] = [
 </script>
 
 <style>
-#app {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Adds space between each carousel */
-}
+@import "../lib/image-carousel/styles.module.css";
 </style>
