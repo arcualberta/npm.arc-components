@@ -57,49 +57,57 @@ import { SlideInfo } from "./models";
 const props = defineProps<{
   slideInfo: SlideInfo[];
   cssClass: string;
-  displaySideIndicators?: boolean;
-  displayBottomIndicator?: boolean;
+  displaySideIndicators?: boolean; // Optional prop
+  displayBottomIndicator?: boolean; // Optional prop
   interval?: number;
 }>();
 
-const currentSlide = ref(0);
-const slides = ref([...props.slideInfo, props.slideInfo[0]]);
+const currentSlide = ref(1);
+const slides = ref([
+  props.slideInfo[props.slideInfo.length - 1],
+  ...props.slideInfo,
+  props.slideInfo[0],
+]);
 const autoScrollInterval = ref<NodeJS.Timeout | null>(null);
 const noTransition = ref(false);
 
+// Default values for optional props
 const displaySideIndicators = props.displaySideIndicators ?? true;
 const displayBottomIndicator = props.displayBottomIndicator ?? true;
 const interval = props.interval ?? 3000;
 
 const nextSlide = () => {
-  if (currentSlide.value < slides.value.length - 1) {
-    currentSlide.value++;
-  }
+  currentSlide.value++;
   if (currentSlide.value === slides.value.length - 1) {
     setTimeout(() => {
       noTransition.value = true;
-      currentSlide.value = 0;
+      currentSlide.value = 1;
       setTimeout(() => {
         noTransition.value = false;
-      }, 50);
-    }, 500);
+      }, 50); // Small delay to apply the transition class back
+    }, 500); // Time must be equal to the transition time in CSS
   }
 };
 
 const prevSlide = () => {
-  if (currentSlide.value > 0) {
-    currentSlide.value--;
-  } else {
-    currentSlide.value = props.slideInfo.length - 1;
+  currentSlide.value--;
+  if (currentSlide.value === 0) {
+    setTimeout(() => {
+      noTransition.value = true;
+      currentSlide.value = slides.value.length - 2;
+      setTimeout(() => {
+        noTransition.value = false;
+      }, 50); // Small delay to apply the transition class back
+    }, 500); // Time must be equal to the transition time in CSS
   }
 };
 
 const goToSlide = (index: number) => {
-  currentSlide.value = index;
+  currentSlide.value = index + 1;
 };
 
 const startAutoScroll = () => {
-  stopAutoScroll();
+  stopAutoScroll(); // Clear any existing interval
   autoScrollInterval.value = setInterval(() => {
     nextSlide();
   }, interval);
@@ -122,4 +130,8 @@ onBeforeUnmount(() => {
 
 <style scoped>
 @import "./styles.module.css";
+
+.no-transition {
+  transition: none !important;
+}
 </style>
