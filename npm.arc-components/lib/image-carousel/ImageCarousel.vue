@@ -4,13 +4,12 @@
     @mouseenter="stopAutoScroll"
     @mouseleave="startAutoScroll"
   >
-    <div class="slides-container">
-      <div
-        v-for="(slide, index) in slideInfo"
-        :key="index"
-        class="slide"
-        :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
-      >
+    <div
+      class="slides-container"
+      :class="{ 'no-transition': noTransition }"
+      :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
+    >
+      <div v-for="(slide, index) in slides" :key="index" class="slide">
         <div class="slide-content">
           <img
             :src="slide.imageUrl"
@@ -42,38 +41,48 @@
     <!-- Pagination -->
     <div v-if="displayBottomIndicator" class="pagination">
       <span
-        v-for="(_slide, index) in slideInfo"
+        v-for="(_, index) in slideInfo"
         :key="index"
         @click="goToSlide(index)"
-        :class="{ active: index === currentSlide }"
+        :class="{ active: index === currentSlide % slideInfo.length }"
       ></span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import { SlideInfo } from "./models";
 
 const props = defineProps<{
   slideInfo: SlideInfo[];
   cssClass: string;
-  displaySideIndicators?: boolean; // Optional prop
-  displayBottomIndicator?: boolean; // Optional prop
+  displaySideIndicators?: boolean;
+  displayBottomIndicator?: boolean;
+  interval?: number;
 }>();
 
 const currentSlide = ref(0);
+const slides = ref([...props.slideInfo, props.slideInfo[0]]);
 const autoScrollInterval = ref<NodeJS.Timeout | null>(null);
+const noTransition = ref(false);
 
-// Default values for optional props
 const displaySideIndicators = props.displaySideIndicators ?? true;
 const displayBottomIndicator = props.displayBottomIndicator ?? true;
+const interval = props.interval ?? 3000;
 
 const nextSlide = () => {
-  if (currentSlide.value < props.slideInfo.length - 1) {
+  if (currentSlide.value < slides.value.length - 1) {
     currentSlide.value++;
-  } else {
-    currentSlide.value = 0;
+  }
+  if (currentSlide.value === slides.value.length - 1) {
+    setTimeout(() => {
+      noTransition.value = true;
+      currentSlide.value = 0;
+      setTimeout(() => {
+        noTransition.value = false;
+      }, 50);
+    }, 500);
   }
 };
 
@@ -90,9 +99,10 @@ const goToSlide = (index: number) => {
 };
 
 const startAutoScroll = () => {
+  stopAutoScroll();
   autoScrollInterval.value = setInterval(() => {
     nextSlide();
-  }, 3000);
+  }, interval);
 };
 
 const stopAutoScroll = () => {
@@ -103,6 +113,10 @@ const stopAutoScroll = () => {
 
 onMounted(() => {
   startAutoScroll();
+});
+
+onBeforeUnmount(() => {
+  stopAutoScroll();
 });
 </script>
 

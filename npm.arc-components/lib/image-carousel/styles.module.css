@@ -99,3 +99,6 @@ img {
 .pagination span.active {
   background: lightblue;
 }
+.no-transition {
+  transition: none !important;
+}
