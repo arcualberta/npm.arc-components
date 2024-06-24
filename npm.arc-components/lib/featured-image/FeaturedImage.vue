@@ -10,7 +10,7 @@
         </a>
         <h6 v-else class="originalTitle">{{ title }}</h6>
         <div class="keyword-box">
-          <span v-for="keyword in keywords" :key="keyword" class="keyword">{{ keyword }}</span>
+          <span v-for="keyword in props.keywords" :key="keyword" class="keyword">{{ keyword }}</span>
         </div>
         <div class="description">{{ description }}</div>
         <a v-if="linkText" :href="link" target="_blank" class="link-button">{{ linkText }}</a>
